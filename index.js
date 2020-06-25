@@ -19,14 +19,6 @@ VegaTransformPostgres.setHttpOptions = function(httpOptions) {
   return this._httpOptions;
 }
 
-VegaTransformPostgres.setPostgresConnectionString = function(postgresConnectionString) {
-  if(postgresConnectionString) {
-    this._postgresConnectionString = postgresConnectionString;
-    return this;
-  }
-  return this._postgresConnectionString;
-}
-
 VegaTransformPostgres.Definition = {
   type: "postgres", // FixMe: make uppercase
   metadata: { changes: true, source: true },
@@ -41,16 +33,12 @@ prototype.transform = async function(_, pulse) {
   if(!VegaTransformPostgres._httpOptions) {
     throw Error("Vega Transform Postgres http options missing. Assign it with setHttpOptions.");
   }
-  if(!VegaTransformPostgres._postgresConnectionString) {
-    throw Error("Vega Transform Postgres postgres connection string missing. Assign it with setPostgresConnectionString.");
-  }
   if(!this._query) {
     throw Error("Internal error: this._query should be defined");
   }
   const result = await new Promise((resolve, reject) => {
     const postData = querystring.stringify({
-      query: this._query,
-      postgresConnectionString: VegaTransformPostgres._postgresConnectionString
+      query: this._query
     });
     VegaTransformPostgres._httpOptions['Content-Length'] = Buffer.byteLength(postData);
     const req = http.request(VegaTransformPostgres._httpOptions, res => {

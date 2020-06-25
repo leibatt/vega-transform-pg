@@ -3,14 +3,14 @@
     "name": "Andrew Fichman"
   },
   "bugs": {
-    "url": "https://github.com/heavyairship/vega-transform-pg/issues"
+    "url": "https://github.com/leibatt/vega-transform-pg/issues"
   },
   "description": "Vega transform for Postgres.",
   "devDependencies": {
     "eslint": "^5.15.1",
     "microbundle": "^0.11.0"
   },
-  "homepage": "https://github.com/heavyairship/vega-transform-pg#readme",
+  "homepage": "https://github.com/leibatt/vega-transform-pg#readme",
   "jsdelivr": "build/vega-transform-pg.umd.js",
   "keywords": [
     "vega",
@@ -23,7 +23,7 @@
   "name": "vega-transform-pg",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heavyairship/vega-transform-pg.git"
+    "url": "git+https://github.com/leibatt/vega-transform-pg.git"
   },
   "scripts": {
     "build": "microbundle --external vega --name VegaTransformPostgres",
