@@ -50,7 +50,7 @@ prototype.transform = async function(_, pulse) {
         if(res.statusCode === 400) {
           reject(`${res.statusMessage}: ${data}`);
         } else {
-          resolve(JSON.parse(data).rows);
+          resolve(JSON.parse(data));
         }
       });
     });
