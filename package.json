@@ -1,7 +1,5 @@
 {
-  "author": {
-    "name": "Andrew Fichman"
-  },
+  "author": "Andrew Fichman",
   "bugs": {
     "url": "https://github.com/leibatt/vega-transform-pg/issues"
   },

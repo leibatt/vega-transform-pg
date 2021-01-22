@@ -23,22 +23,23 @@ VegaTransformPostgres.Definition = {
   type: "postgres", // FixMe: make uppercase
   metadata: { changes: true, source: true },
   params: [
-    { name: "relation", type: "string", required: true }
+    { name: "query", type: "string", required: true }
   ]
 };
 
 const prototype = inherits(VegaTransformPostgres, Transform);
 
 prototype.transform = async function(_, pulse) {
+  console.log(_)
   if(!VegaTransformPostgres._httpOptions) {
     throw Error("Vega Transform Postgres http options missing. Assign it with setHttpOptions.");
   }
-  if(!this._query) {
+  if(!_.query) {
     throw Error("Internal error: this._query should be defined");
   }
   const result = await new Promise((resolve, reject) => {
     const postData = querystring.stringify({
-      query: this._query
+      query: _.query
     });
     VegaTransformPostgres._httpOptions['Content-Length'] = Buffer.byteLength(postData);
     const req = http.request(VegaTransformPostgres._httpOptions, res => {
